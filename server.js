@@ -16,6 +16,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 // Morgan for logging HTTP requests
 app.use(logger("dev"));
+app.set("view engine", "ejs");
+
+app.get("/", (req, res) => {
+    res.render("index");
+  });
 
 mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
